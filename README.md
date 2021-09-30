@@ -15,8 +15,8 @@
 
 ### association
 
-has_many: items
-has_many: orders
+has_many :items
+has_many :orders
 
 ## itemsテーブル
 
@@ -34,8 +34,8 @@ has_many: orders
 
 ### association
 
-belongs_to: user
-has_one: order
+belongs_to :user
+has_one :order
 
 ## ordersテーブル
 
@@ -46,9 +46,9 @@ has_one: order
 
 ### association
 
-belongs_to: user
-belongs_to: item
-has_one: delivery
+belongs_to :user
+belongs_to :item
+has_one :delivery
 
 ## deliveriesテーブル
 
@@ -65,4 +65,4 @@ has_one: delivery
 
 ### association
 
-belongs_to: order
+belongs_to :order
