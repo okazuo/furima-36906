@@ -47,15 +47,15 @@ has_one: buy
 ### association
 
 belongs_to: user
-belongs_to: buy
+belongs_to: item
 has_one: delivery
 
-## deliverysテーブル
+## deliveriesテーブル
 
 | Column           | type       | Options                      |
 |------------------|------------|------------------------------|
 |postal_number     |string      |null:false                    |
-|prefecture_id     |string      |null:false                    |
+|prefecture_id     |integer      |null:false                   |
 |municipality      |string      |null:false                    |
 |lot_number        |string      |null:false                    |
 |building          |string      |                              |
