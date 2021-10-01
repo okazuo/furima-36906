@@ -10,6 +10,6 @@ class User < ApplicationRecord
   validates :last_namek, presence: true
   validates :first_namek, presence: true
   validates :birthday, presence: true
-
+  validates :password, format: {with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]/}
   has_many :items
 end
