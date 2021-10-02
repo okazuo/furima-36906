@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   validates :postage_id, presence: true
   validates :prefecture_id, presence: true
   validates :period_id, presence: true
-
+  
   belongs_to :user
+  has_one_attached :image
 end
