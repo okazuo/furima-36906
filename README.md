@@ -15,8 +15,8 @@
 
 ### association
 
-has_many: items
-has_many: buys
+has_many :items
+has_many :orders
 
 ## itemsテーブル
 
@@ -34,10 +34,10 @@ has_many: buys
 
 ### association
 
-belongs_to: user
-has_one: buy
+belongs_to :user
+has_one :order
 
-## buysテーブル
+## ordersテーブル
 
 | Column           | type       | Options                      |
 |------------------|------------|------------------------------|
@@ -46,9 +46,9 @@ has_one: buy
 
 ### association
 
-belongs_to: user
-belongs_to: item
-has_one: delivery
+belongs_to :user
+belongs_to :item
+has_one :delivery
 
 ## deliveriesテーブル
 
@@ -60,9 +60,9 @@ has_one: delivery
 |lot_number        |string      |null:false                    |
 |building          |string      |                              |
 |telephone         |string      |null:false                    |
-|buy               |references  |null:false, foreign_key: true |
+|order             |references  |null:false, foreign_key: true |
 
 
 ### association
 
-belongs_to: buy
+belongs_to :order
