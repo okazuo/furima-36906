@@ -1,6 +1,6 @@
 class OrderDelivery
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_number, :prefecture_id, :municipality, :lot_number, :building, :telephone, :order_id
+  attr_accessor :user_id, :item_id, :postal_number, :prefecture_id, :municipality, :lot_number, :building, :telephone, :order_id, :token, :price
 
   with_options presence: true do
     validates :postal_number, format: {with:  /\A[0-9]{3}-[0-9]{4}\z/, length: {other_than: 8}}
@@ -8,6 +8,7 @@ class OrderDelivery
     validates :municipality
     validates :lot_number
     validates :telephone
+    validates :token
   end
 
   def save
