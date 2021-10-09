@@ -8,7 +8,7 @@ class OrderDelivery
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :municipality
     validates :lot_number
-    validates :telephone
+    validates :telephone, formaat: { with: /\A\d{10,11}\z/ }
     validates :token
   end
 
