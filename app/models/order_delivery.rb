@@ -4,11 +4,11 @@ class OrderDelivery
                 :token, :price
 
   with_options presence: true do
-    validates :postal_number, format: { with: /\A[0-9]{3}-[0-9]{4}\z/}
+    validates :postal_number, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :municipality
     validates :lot_number
-    validates :telephone, format: { with: /\A\d{10,11}\z/ }, length: {minimum: 10}, numericality: {only_integer: true} 
+    validates :telephone, format: { with: /\A\d{10,11}\z/ }, length: { minimum: 10 }, numericality: { only_integer: true }
     validates :token
   end
 
