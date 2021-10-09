@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    # Faker::Config.locale = :ja  fakerを日本語に対応。
+    Faker::Config.locale = :ja 
     title { Faker::Commerce.product_name }
     price { rand(300..9999999) }
     explanation { Faker::Lorem.paragraphs }

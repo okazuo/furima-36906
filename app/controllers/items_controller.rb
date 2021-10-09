@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :get_record, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :destroy]
-
+  before_action :sold_item, only: [:edit, :destroy]
+  
   def index
     @item = Item.order('created_at DESC')
   end
@@ -52,5 +53,9 @@ class ItemsController < ApplicationController
 
   def get_record
     @item = Item.find(params[:id])
+  end
+
+  def sold_item
+    redirect_to root_path if @item.order.present?
   end
 end
