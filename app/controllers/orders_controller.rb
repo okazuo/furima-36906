@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   def index
     @order_delivery = OrderDelivery.new
   end
-  
+
   def create
     @order_delivery = OrderDelivery.new(order_delivery_params)
     if @order_delivery.valid?
@@ -18,13 +18,15 @@ class OrdersController < ApplicationController
       render :index
     end
   end
-  
+
   private
-  
+
   def order_delivery_params
-    params.require(:order_delivery).permit( :postal_number, :prefecture_id, :municipality, :lot_number, :building, :telephone,).merge(user_id: current_user.id, item_id: @item.id, token: params[:token],price: @item.price)
+    params.require(:order_delivery).permit(:postal_number, :prefecture_id, :municipality, :lot_number, :building, :telephone).merge(
+      user_id: current_user.id, item_id: @item.id, token: params[:token], price: @item.price
+    )
   end
-  
+
   def pay_item
     Payjp.api_key = 'sk_test_9ebe797059b35d6361c0e218'
     Payjp::Charge.create(
@@ -33,20 +35,16 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
-  
+
   def get_record
     @item = Item.find(params[:item_id])
   end
 
   def sold_item
-    if @item.order.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.order.present?
   end
 
   def myself_order
-    if current_user.id == @item.user.id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == @item.user.id
   end
 end
