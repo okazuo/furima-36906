@@ -35,8 +35,8 @@ RSpec.describe OrderDelivery, type: :model do
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include('Postal number is invalid')
       end
-      it 'postal_numberが7桁では登録できない' do
-        @order_delivery.postal_number = '123-456'
+      it 'postal_numberがハイフン抜きでは登録できない' do
+        @order_delivery.postal_number = '1234567'
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include('Postal number is invalid')
       end
