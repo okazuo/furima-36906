@@ -3,7 +3,7 @@ FactoryBot.define do
     Faker::Config.locale = :ja
     title { Faker::Commerce.product_name }
     price { rand(300..9_999_999) }
-    explanation { Faker::Lorem.sentence }
+    explanation { Faker::Lorem.paragraphs }
     category_id { rand(2..11) }
     status_id { rand(2..7) }
     postage_id { rand(2..3) }
