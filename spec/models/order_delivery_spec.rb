@@ -76,7 +76,7 @@ RSpec.describe OrderDelivery, type: :model do
         expect(@order_delivery.errors.full_messages).to include('Telephone is not a number')
       end
       it '電話番号が英数混合では登録できない' do
-        @order_delivery.telephone = '1234abcd'
+        @order_delivery.telephone = '12345abcde'
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include('Telephone is not a number')
       end
