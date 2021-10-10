@@ -75,6 +75,21 @@ RSpec.describe OrderDelivery, type: :model do
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include('Telephone is not a number')
       end
+      it '電話番号が英数混合では登録できない' do
+        @order_delivery.telephone = '1234abcd'
+        @order_delivery.valid?
+        expect(@order_delivery.errors.full_messages).to include('Telephone is not a number')
+      end
+      it 'item_idが空では登録できない' do
+        @order_delivery.item_id = nil
+        @order_delivery.valid?
+        expect(@order_delivery.errors.full_messages).to include("Item can't be blank")
+      end
+      it 'user_idが空では登録できない' do
+        @order_delivery.user_id = nil
+        @order_delivery.valid?
+        expect(@order_delivery.errors.full_messages).to include("User can't be blank")
+      end
     end
   end
 end

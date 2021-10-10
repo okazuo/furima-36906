@@ -10,6 +10,8 @@ class OrderDelivery
     validates :lot_number
     validates :telephone, format: { with: /\A\d{10,11}\z/ }, length: { minimum: 10 }, numericality: { only_integer: true }
     validates :token
+    validates :user_id
+    validates :item_id
   end
 
   def save
